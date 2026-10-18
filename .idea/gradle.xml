@@ -23,9 +23,8 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/build-logic" />
             <option value="$PROJECT_DIR$/build-logic/convention" />
-            <option value="$PROJECT_DIR$/common" />
-            <option value="$PROJECT_DIR$/common/deps" />
-            <option value="$PROJECT_DIR$/common/uikit" />
+            <option value="$PROJECT_DIR$/knowledgebase" />
+            <option value="$PROJECT_DIR$/knowledgebase/insets" />
             <option value="$PROJECT_DIR$/patterns" />
             <option value="$PROJECT_DIR$/patterns/mvvm" />
           </set>

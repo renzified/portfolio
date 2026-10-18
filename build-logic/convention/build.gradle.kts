@@ -18,5 +18,9 @@ gradlePlugin {
             id = "portfolio.android.library"
             implementationClass = "com.rsalanga.portfolio.AndroidLibraryConventionPlugin"
         }
+        register("androidCompose") {
+            id = "portfolio.android.compose"
+            implementationClass = "com.rsalanga.portfolio.AndroidComposeConventionPlugin"
+        }
     }
 }

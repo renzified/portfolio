@@ -10,7 +10,7 @@
         android:theme="@style/Theme.Portfolio">
 
         <activity
-            android:name=".MainActivity"
+            android:name=".login.LoginFlowActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

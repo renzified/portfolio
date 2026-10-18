@@ -34,10 +34,13 @@ No ktlint/detekt is configured; Kotlin style is `official` (`gradle.properties`)
 Included build (`pluginManagement { includeBuild("build-logic") }`) providing convention plugins. Module build files should apply these instead of the raw AGP plugins:
 - `portfolio.android.application` → `AndroidApplicationConventionPlugin` (sets targetSdk; release build has `optimization.enable = false`)
 - `portfolio.android.library` → `AndroidLibraryConventionPlugin`
+- `portfolio.android.compose` → `AndroidComposeConventionPlugin` — applied *alongside* one of the above; enables Compose and adds the Compose BOM/material3/tooling deps (plus `activity-compose` for applications)
+
+Convention plugins resolve plugin IDs and libraries from the version catalog via the `Project.libs` helpers in `VersionCatalog.kt` (`libs.pluginId(...)`, `libs.library(...)`) rather than hardcoding coordinates.
 
 Both call `configureAndroid()` in `AndroidConvention.kt`. SDK levels and JVM target live in one place: `AndroidConfig.kt` (compileSdk/targetSdk 37, minSdk 26, JVM 11). Change them there, not in module build files. Module build files only set `namespace`, `applicationId`/version, and dependencies.
 
-There is no explicit Kotlin Gradle plugin — AGP 9's built-in Kotlin support compiles Kotlin sources.
+There is no explicit Kotlin Gradle plugin — AGP 9's built-in Kotlin support compiles Kotlin sources. The effective Kotlin version is set by the `kotlin` catalog version: the Compose compiler plugin (declared `apply false` in the root `build.gradle.kts`) pulls KGP up to that version, so the Compose plugin and Kotlin always match.
 
 ### Dependencies
 All versions are in `gradle/libs.versions.toml`; `build-logic` reads the same catalog. Repositories are centrally declared with `FAIL_ON_PROJECT_REPOS`, so don't add `repositories {}` in module build files.

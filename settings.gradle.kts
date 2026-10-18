@@ -24,6 +24,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "portfolio"
-include(":common:deps")
 include(":patterns:mvvm")
-include(":common:uikit")
+include(":knowledgebase:insets")

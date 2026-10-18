@@ -1,5 +1,6 @@
 plugins {
     id("portfolio.android.application")
+    id("portfolio.android.compose")
 }
 
 android {
@@ -9,8 +10,4 @@ android {
         versionCode = 1
         versionName = "1.0"
     }
-}
-
-dependencies {
-    implementation(project(":common:deps"))
 }
