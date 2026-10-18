@@ -25,6 +25,7 @@
             <option value="$PROJECT_DIR$/build-logic/convention" />
             <option value="$PROJECT_DIR$/knowledgebase" />
             <option value="$PROJECT_DIR$/knowledgebase/insets" />
+            <option value="$PROJECT_DIR$/mathletic" />
             <option value="$PROJECT_DIR$/patterns" />
             <option value="$PROJECT_DIR$/patterns/mvvm" />
           </set>

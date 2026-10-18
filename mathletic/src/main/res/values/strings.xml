@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Mathletic</string>
+    <string name="play">Play</string>
+    <string name="skills">Skills</string>
+    <string name="ranks">Ranks</string>
+    <string name="profile">Profile</string>
+</resources>
