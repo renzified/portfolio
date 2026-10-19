@@ -1,4 +1,4 @@
-package com.rsalanga.mathletic.components
+package com.rsalanga.mathletic.pages.home.components
 
 import android.content.res.Configuration
 import androidx.annotation.DrawableRes
@@ -6,7 +6,6 @@ import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
