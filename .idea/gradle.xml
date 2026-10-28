@@ -28,6 +28,8 @@
             <option value="$PROJECT_DIR$/mathletic" />
             <option value="$PROJECT_DIR$/patterns" />
             <option value="$PROJECT_DIR$/patterns/mvvm" />
+            <option value="$PROJECT_DIR$/roadmap" />
+            <option value="$PROJECT_DIR$/roadmap/android" />
           </set>
         </option>
       </GradleProjectSettings>

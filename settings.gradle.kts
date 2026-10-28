@@ -27,3 +27,4 @@ rootProject.name = "portfolio"
 include(":patterns:mvvm")
 include(":knowledgebase:insets")
 include(":mathletic")
+include(":roadmap:android")
