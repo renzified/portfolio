@@ -1,7 +1,7 @@
 package com.rsalanga.roadmap.shared.models
 
-import kotlinx.datetime.LocalDateTime
 import kotlin.uuid.Uuid
+import kotlinx.datetime.LocalDateTime
 
 data class Event(
     val id: Uuid,

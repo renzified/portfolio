@@ -1,8 +1,8 @@
 package com.rsalanga.roadmap.shared.models
 
-import kotlinx.datetime.LocalTime
 import kotlin.time.Duration
 import kotlin.uuid.Uuid
+import kotlinx.datetime.LocalTime
 
 data class StudyPlan(
     val id: Uuid,
