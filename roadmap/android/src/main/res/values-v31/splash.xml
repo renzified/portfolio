@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Splash: surface background, teal icon circle, then hands off to the app theme. -->
+    <!-- Splash: surface background, teal icon circle, mascot + wordmark at the bottom, then hands off
+         to the app theme. The branding image is platform-only, so it shows on API 31+. -->
     <style name="Theme.Roadmap.Starting" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/roadmap_splash_background</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/avd_splash_icon</item>
         <item name="windowSplashScreenIconBackgroundColor">@color/roadmap_icon_background</item>
+        <item name="android:windowSplashScreenBrandingImage">@drawable/splash_branding</item>
         <item name="windowSplashScreenAnimationDuration">800</item>
         <item name="postSplashScreenTheme">@style/Theme.Portfolio</item>
     </style>

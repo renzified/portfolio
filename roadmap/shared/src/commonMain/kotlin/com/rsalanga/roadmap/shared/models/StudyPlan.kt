@@ -11,6 +11,5 @@ data class StudyPlan(
     val commitmentPerOccurrence: Duration,
     val preferredDay: PreferredDay?,
     val preferredTime: LocalTime?,
-    val sessionLength: Duration,
-
+    val sessionLength: Duration
 )
