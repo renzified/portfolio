@@ -22,3 +22,10 @@ local.properties
 # OS
 .DS_Store
 Thumbs.db
+
+# Xcode / iOS
+**/xcuserdata/
+DerivedData/
+.swiftpm/
+*.xcappdata
+
