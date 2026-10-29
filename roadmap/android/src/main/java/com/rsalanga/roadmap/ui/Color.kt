@@ -160,6 +160,8 @@ val RoadmapDarkColorScheme: ColorScheme = darkColorScheme(
  */
 @Immutable
 data class RoadmapExtendedColors(
+    /** Secondary text on a `primaryContainer` card (e.g. "Nov 2 – Dec 27 · 8 weeks"). */
+    val onPrimaryContainerVariant: Color,
     /** Secondary text on a `secondaryContainer` card (e.g. "Work · Meet"). */
     val onSecondaryContainerVariant: Color,
     /** "Busy / focus" calendar events. */
@@ -177,9 +179,12 @@ data class RoadmapExtendedColors(
     val studyDecor: Color,
     /** Decorative cookie shape behind a primary card header. */
     val primaryDecor: Color,
+    /** Decorative cookie shape on a `primary` surface (Coach tab hero). */
+    val primaryDecorOnPrimary: Color,
 )
 
 val RoadmapLightExtendedColors = RoadmapExtendedColors(
+    onPrimaryContainerVariant = Teal30,
     onSecondaryContainerVariant = TealGrey30,
     busyContainer = Indigo90,
     onBusyContainer = Indigo10,
@@ -190,9 +195,11 @@ val RoadmapLightExtendedColors = RoadmapExtendedColors(
     onStudyTonal = Clay10,
     studyDecor = Clay80,
     primaryDecor = Color(0xFF7FD4EA),
+    primaryDecorOnPrimary = Color(0xFF1A7D8F),
 )
 
 val RoadmapDarkExtendedColors = RoadmapExtendedColors(
+    onPrimaryContainerVariant = Teal80,
     onSecondaryContainerVariant = TealGrey80,
     busyContainer = Indigo30,
     onBusyContainer = Indigo90,
@@ -202,7 +209,8 @@ val RoadmapDarkExtendedColors = RoadmapExtendedColors(
     studyTonal = Clay40,
     onStudyTonal = Color.White,
     studyDecor = Clay25,
-    primaryDecor = Color(0xFF1A7D8F),
+    primaryDecor = Color(0xFF1A6878),
+    primaryDecorOnPrimary = Color(0xFF6FC4DA),
 )
 
 val LocalRoadmapExtendedColors = staticCompositionLocalOf { RoadmapLightExtendedColors }

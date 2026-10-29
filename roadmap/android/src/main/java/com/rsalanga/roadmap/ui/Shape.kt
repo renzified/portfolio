@@ -16,6 +16,9 @@ val RoadmapShapes = Shapes(
 
 /** Expressive shapes the design uses beyond the five M3 slots. */
 object RoadmapShapeTokens {
+    /** Between medium and large — chat cards, tip and check-in cards. */
+    val LargeReduced = RoundedCornerShape(24.dp)
+
     /** Hero card on event details. */
     val ExtraLargeIncreased = RoundedCornerShape(36.dp)
 

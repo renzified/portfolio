@@ -85,7 +85,7 @@ val RoadmapTypography = Typography(
     // Featured card title — "Conversational Spanish"
     headlineSmall = display(24, 28, 600),
     // Section / top-bar title — "Today", "Coach"
-    titleLarge = display(22, 28, 500),
+    titleLarge = display(20, 26, 500),
     // Card / question title — "How much can you commit each week?"
     titleMedium = text(17, 23, 600),
     // List-item title
@@ -100,6 +100,28 @@ val RoadmapTypography = Typography(
     // Overlines — "STEP 1 OF 5 · SKILL", nav labels
     labelMedium = text(12, 16, 600, 0.3),
     labelSmall = text(11, 16, 500),
+    // Emphasized: same size as the base style, one weight step up.
+    displayLargeEmphasized = display(57, 64, 700, -0.25),
+    displayMediumEmphasized = display(45, 52, 700),
+    displaySmallEmphasized = display(36, 42, 700, -0.2),
+    headlineLargeEmphasized = display(34, 40, 700, -0.2),
+    headlineMediumEmphasized = display(32, 38, 700, -0.2),
+    headlineSmallEmphasized = display(24, 28, 700),
+    // Section question — "What does success look like?"
+    titleLargeEmphasized = display(20, 26, 600),
+    // Large (56–64 dp) buttons — "Continue", "Build my plan"
+    titleMediumEmphasized = text(17, 23, 700),
+    titleSmallEmphasized = text(15, 20, 700),
+    // List-row and event-card titles — "Team sync", "Complete beginner"
+    bodyLargeEmphasized = text(16, 22, 600),
+    bodyMediumEmphasized = text(15, 21, 600),
+    // Chips and field labels — "2 study sessions", "Skill"
+    bodySmallEmphasized = text(13, 18, 600),
+    labelLargeEmphasized = text(14, 20, 700),
+    // Selected nav label
+    labelMediumEmphasized = text(12, 16, 700, 0.3),
+    // Day abbreviations — "MON"
+    labelSmallEmphasized = text(11, 16, 700),
 )
 
 /** Overline used on study cards ("SPANISH · WEEK 2"). */

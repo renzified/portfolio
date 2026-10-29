@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.tooling.preview.Preview
-import com.rsalanga.roadmap.pages.calendar.CalendarScreen
+import com.rsalanga.roadmap.pages.home.HomeScreen
 import com.rsalanga.roadmap.shared.Greeting
 import com.rsalanga.roadmap.ui.RoadmapTheme
 
@@ -42,7 +42,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             RoadmapTheme {
-                CalendarScreen()
+                HomeScreen()
             }
         }
     }
