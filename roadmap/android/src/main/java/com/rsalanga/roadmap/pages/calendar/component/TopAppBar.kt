@@ -29,23 +29,34 @@ import com.rsalanga.roadmap.R
 import com.rsalanga.roadmap.ui.RoadmapTheme
 
 @Composable
-internal fun CalendarScreenTopAppBar(
-    title: String,
-    yearAndWeek: String
-) {
+internal fun CalendarScreenTopAppBar(title: String, yearAndWeek: String) {
     Surface {
         Column {
             Spacer(modifier = Modifier.windowInsetsPadding(WindowInsets.statusBars))
-            Row(modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
+            Row(
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 4.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
                 Column {
                     Text(text = title, style = MaterialTheme.typography.headlineLarge)
-                    Text(text = yearAndWeek, style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.Normal))
+                    Text(
+                        text = yearAndWeek,
+                        style = MaterialTheme.typography.labelLarge.copy(
+                            fontWeight = FontWeight.Normal
+                        )
+                    )
                 }
 
                 Spacer(modifier = Modifier.weight(1f))
 
                 Row {
-                    IconButton(onClick = {}) { Icon(painter = painterResource(R.drawable.ic_search), contentDescription = null) }
+                    IconButton(onClick = {
+                    }) {
+                        Icon(
+                            painter = painterResource(R.drawable.ic_search),
+                            contentDescription = null
+                        )
+                    }
                     Spacer(modifier = Modifier.width(4.dp))
                     FilledTonalButton(onClick = {}) { Text(text = "Today") }
                 }

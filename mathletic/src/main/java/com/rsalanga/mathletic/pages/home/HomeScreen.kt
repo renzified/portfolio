@@ -23,7 +23,6 @@ fun HomeScreen() {
             )
         }
     ) { paddingValues ->
-
     }
 }
 

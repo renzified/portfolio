@@ -17,6 +17,7 @@ class KmpLibraryConventionPlugin : Plugin<Project> {
         with(target) {
             pluginManager.apply(libs.pluginId("kotlin-multiplatform"))
             pluginManager.apply(libs.pluginId("android-kotlin-multiplatform-library"))
+            configureCodeQuality()
 
             extensions.configure<KotlinMultiplatformExtension> {
                 extensions.configure<KotlinMultiplatformAndroidLibraryTarget> {

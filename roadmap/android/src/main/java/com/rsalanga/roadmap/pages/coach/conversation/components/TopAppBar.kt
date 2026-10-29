@@ -26,9 +26,7 @@ import com.rsalanga.roadmap.R
 import com.rsalanga.roadmap.ui.RoadmapTheme
 
 @Composable
-internal fun ConversationTopAppBar(
-    onBack: () -> Unit
-) {
+internal fun ConversationTopAppBar(onBack: () -> Unit) {
     Surface {
         Column {
             Spacer(modifier = Modifier.windowInsetsPadding(WindowInsets.statusBars))
@@ -49,7 +47,9 @@ internal fun ConversationTopAppBar(
                     Text(text = "Coach", style = MaterialTheme.typography.titleLarge)
                     Text(
                         text = "New plan · Spanish",
-                        style = MaterialTheme.typography.bodySmall.copy(color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        style = MaterialTheme.typography.bodySmall.copy(
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
                     )
                 }
 
@@ -73,7 +73,9 @@ internal fun ConversationTopAppBar(
                 Text(
                     text = "STEP 1 OF 5 · SKILL",
                     modifier = Modifier.padding(start = 16.dp),
-                    style = MaterialTheme.typography.labelMedium.copy(color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    style = MaterialTheme.typography.labelMedium.copy(
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
                 )
             }
         }

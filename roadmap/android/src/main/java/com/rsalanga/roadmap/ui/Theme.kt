@@ -25,14 +25,16 @@ import androidx.compose.ui.platform.LocalContext
 fun RoadmapTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     dynamicColor: Boolean = false,
-    content: @Composable () -> Unit,
+    content: @Composable () -> Unit
 ) {
     val colorScheme = when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
+
         darkTheme -> RoadmapDarkColorScheme
+
         else -> RoadmapLightColorScheme
     }
     val extendedColors = if (darkTheme) RoadmapDarkExtendedColors else RoadmapLightExtendedColors
@@ -43,7 +45,7 @@ fun RoadmapTheme(
             motionScheme = MotionScheme.expressive(),
             shapes = RoadmapShapes,
             typography = RoadmapTypography,
-            content = content,
+            content = content
         )
     }
 }

@@ -23,11 +23,12 @@ import androidx.savedstate.compose.serialization.serializers.MutableStateSeriali
 @Composable
 internal fun rememberNavigationState(
     startRoute: NavKey,
-    topLevelRoutes: Set<NavKey>,
+    topLevelRoutes: Set<NavKey>
 ): NavigationState {
     val topLevelRoute = rememberSerializable(
-        startRoute, topLevelRoutes,
-        serializer = MutableStateSerializer(NavKeySerializer()),
+        startRoute,
+        topLevelRoutes,
+        serializer = MutableStateSerializer(NavKeySerializer())
     ) {
         mutableStateOf(startRoute)
     }
@@ -38,7 +39,7 @@ internal fun rememberNavigationState(
         NavigationState(
             startRoute = startRoute,
             topLevelRoute = topLevelRoute,
-            backStacks = backStacks,
+            backStacks = backStacks
         )
     }
 }
@@ -47,7 +48,7 @@ internal fun rememberNavigationState(
 internal class NavigationState(
     val startRoute: NavKey,
     topLevelRoute: MutableState<NavKey>,
-    val backStacks: Map<NavKey, NavBackStack<NavKey>>,
+    val backStacks: Map<NavKey, NavBackStack<NavKey>>
 ) {
     var topLevelRoute: NavKey by topLevelRoute
 
@@ -64,14 +65,12 @@ internal class NavigationState(
      * another tab is shown.
      */
     @Composable
-    fun toDecoratedEntries(
-        entryProvider: (NavKey) -> NavEntry<NavKey>,
-    ): List<NavEntry<NavKey>> {
+    fun toDecoratedEntries(entryProvider: (NavKey) -> NavEntry<NavKey>): List<NavEntry<NavKey>> {
         val decoratedEntries = backStacks.mapValues { (_, stack) ->
             rememberDecoratedNavEntries(
                 backStack = stack,
                 entryDecorators = listOf(rememberSaveableStateHolderNavEntryDecorator()),
-                entryProvider = entryProvider,
+                entryProvider = entryProvider
             )
         }
 

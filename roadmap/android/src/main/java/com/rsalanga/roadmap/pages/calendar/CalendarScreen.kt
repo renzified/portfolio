@@ -16,9 +16,7 @@ import com.rsalanga.roadmap.ui.RoadmapShapeTokens
 import com.rsalanga.roadmap.ui.RoadmapTheme
 
 @Composable
-internal fun CalendarScreen(
-    onClickLearnASkill: () -> Unit
-) {
+internal fun CalendarScreen(onClickLearnASkill: () -> Unit) {
     Scaffold(
         topBar = {
             CalendarScreenTopAppBar(
@@ -36,7 +34,6 @@ internal fun CalendarScreen(
             }
         }
     ) { _ ->
-
     }
 }
 

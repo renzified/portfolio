@@ -111,7 +111,7 @@ val RoadmapLightColorScheme: ColorScheme = lightColorScheme(
     surfaceContainerLow = Neutral96,
     surfaceContainer = Neutral94,
     surfaceContainerHigh = Neutral91,
-    surfaceContainerHighest = Neutral89,
+    surfaceContainerHighest = Neutral89
 )
 
 val RoadmapDarkColorScheme: ColorScheme = darkColorScheme(
@@ -150,7 +150,7 @@ val RoadmapDarkColorScheme: ColorScheme = darkColorScheme(
     surfaceContainerLow = Neutral10,
     surfaceContainer = Neutral12,
     surfaceContainerHigh = Neutral17,
-    surfaceContainerHighest = Neutral22,
+    surfaceContainerHighest = Neutral22
 )
 
 /**
@@ -180,7 +180,7 @@ data class RoadmapExtendedColors(
     /** Decorative cookie shape behind a primary card header. */
     val primaryDecor: Color,
     /** Decorative cookie shape on a `primary` surface (Coach tab hero). */
-    val primaryDecorOnPrimary: Color,
+    val primaryDecorOnPrimary: Color
 )
 
 val RoadmapLightExtendedColors = RoadmapExtendedColors(
@@ -195,7 +195,7 @@ val RoadmapLightExtendedColors = RoadmapExtendedColors(
     onStudyTonal = Clay10,
     studyDecor = Clay80,
     primaryDecor = Color(0xFF7FD4EA),
-    primaryDecorOnPrimary = Color(0xFF1A7D8F),
+    primaryDecorOnPrimary = Color(0xFF1A7D8F)
 )
 
 val RoadmapDarkExtendedColors = RoadmapExtendedColors(
@@ -210,7 +210,7 @@ val RoadmapDarkExtendedColors = RoadmapExtendedColors(
     onStudyTonal = Color.White,
     studyDecor = Clay25,
     primaryDecor = Color(0xFF1A6878),
-    primaryDecorOnPrimary = Color(0xFF6FC4DA),
+    primaryDecorOnPrimary = Color(0xFF6FC4DA)
 )
 
 val LocalRoadmapExtendedColors = staticCompositionLocalOf { RoadmapLightExtendedColors }

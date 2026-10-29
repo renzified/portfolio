@@ -10,14 +10,14 @@ import androidx.compose.ui.graphics.Color
 // or game tokens from MaterialTheme.mathleticColors instead.
 // ---------------------------------------------------------------------------
 object Brand {
-    val Ink = Color(0xFF1B1410)          // text, dark buttons, active nav pill
-    val Cream = Color(0xFFFBF5EC)        // app background
-    val Sand = Color(0xFFF3E7D8)         // tonal buttons, keypad keys, nav bar
-    val Orange = Color(0xFFFF7A2F)       // primary / Sprint
+    val Ink = Color(0xFF1B1410) // text, dark buttons, active nav pill
+    val Cream = Color(0xFFFBF5EC) // app background
+    val Sand = Color(0xFFF3E7D8) // tonal buttons, keypad keys, nav bar
+    val Orange = Color(0xFFFF7A2F) // primary / Sprint
     val Peach = Color(0xFFFFE1C7)
-    val Purple = Color(0xFF8E70FF)       // secondary / Practice
+    val Purple = Color(0xFF8E70FF) // secondary / Practice
     val Lavender = Color(0xFFE7DEFF)
-    val Green = Color(0xFF26784C)        // mastery / correct
+    val Green = Color(0xFF26784C) // mastery / correct
     val Mint = Color(0xFFDDF3E5)
 }
 
@@ -59,16 +59,16 @@ val LightColors = lightColorScheme(
     surfaceBright = Color(0xFFFBF5EC),
     surfaceContainerLowest = Color(0xFFFFFFFF), // cards, question card
     surfaceContainerLow = Color(0xFFFFF9F2),
-    surfaceContainer = Color(0xFFF3E7D8),       // nav bar, tonal buttons, keys
+    surfaceContainer = Color(0xFFF3E7D8), // nav bar, tonal buttons, keys
     surfaceContainerHigh = Color(0xFFEADCCB),
     surfaceContainerHighest = Color(0xFFE3D3C1),
 
-    inverseSurface = Color(0xFF1B1410),         // active nav pill, dark CTA
+    inverseSurface = Color(0xFF1B1410), // active nav pill, dark CTA
     inverseOnSurface = Color(0xFFFFF5EB),
 
     outline = Color(0xFF8A7868),
     outlineVariant = Color(0xFFCDBBA8),
-    scrim = Color(0xFF000000),
+    scrim = Color(0xFF000000)
 )
 
 // ---------------------------------------------------------------------------
@@ -117,5 +117,5 @@ val DarkColors = darkColorScheme(
 
     outline = Color(0xFF9F8D7F),
     outlineVariant = Color(0xFF52443A),
-    scrim = Color(0xFF000000),
+    scrim = Color(0xFF000000)
 )

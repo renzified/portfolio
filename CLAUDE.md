@@ -20,7 +20,15 @@ Use `./gradlew` (Git Bash) or `gradlew.bat` (PowerShell/cmd). Module paths follo
 ./gradlew :common:uikit:lintDebug             # Android lint
 ```
 
-No ktlint/detekt is configured; Kotlin style is `official` (`gradle.properties`). Configuration cache is enabled.
+```sh
+./gradlew ktlintCheck detekt lint test         # everything CI runs on a PR
+./gradlew ktlintFormat                         # auto-fix ktlint violations
+./gradlew :roadmap:android:updateLintBaseline --no-configuration-cache  # re-record lint baseline
+```
+
+ktlint uses the `android_studio` style with overrides in `.editorconfig`; detekt layers `config/detekt/detekt.yml` over its defaults. Pre-existing Android Lint issues live in each module's `lint-baseline.xml`. Configuration cache is enabled.
+
+CI (`.github/workflows/android-ci.yml`) runs Ktlint, Detekt, Android Lint and Tests as separate checks on every PR to `master`.
 
 ## Architecture
 
@@ -36,6 +44,8 @@ Included build (`pluginManagement { includeBuild("build-logic") }`) providing co
 - `portfolio.android.library` → `AndroidLibraryConventionPlugin`
 - `portfolio.android.compose` → `AndroidComposeConventionPlugin` — applied *alongside* one of the above; enables Compose and adds the Compose BOM/material3/tooling deps (plus `activity-compose` for applications)
 - `portfolio.kmp.library` → `KmpLibraryConventionPlugin` — Kotlin Multiplatform library (Android via AGP's `com.android.kotlin.multiplatform.library`, plus `iosArm64`/`iosSimulatorArm64`); adds `kotlin-test` to `commonTest`. Modules set `namespace` in `kotlin { android { } }`. Example: `:roadmap:shared`
+
+All three base plugins also call `configureCodeQuality()` (`CodeQualityConvention.kt`), which applies ktlint and detekt; `configureAndroid()` adds the lint baseline and JUnit/Espresso test deps.
 
 Convention plugins resolve plugin IDs and libraries from the version catalog via the `Project.libs` helpers in `VersionCatalog.kt` (`libs.pluginId(...)`, `libs.library(...)`) rather than hardcoding coordinates.
 

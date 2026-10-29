@@ -6,7 +6,7 @@ import com.rsalanga.roadmap.ui.RoadmapTheme
 
 @Composable
 internal fun PlansScreen() {
-
+    // TODO: not designed yet
 }
 
 @Preview
