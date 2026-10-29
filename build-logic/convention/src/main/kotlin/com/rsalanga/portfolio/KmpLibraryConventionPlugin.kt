@@ -1,0 +1,39 @@
+package com.rsalanga.portfolio
+
+import com.android.build.api.dsl.KotlinMultiplatformAndroidLibraryTarget
+import org.gradle.api.Plugin
+import org.gradle.api.Project
+import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.dependencies
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
+
+/**
+ * Kotlin Multiplatform library targeting Android and iOS. Modules still set
+ * their own `namespace` inside `kotlin { android { ... } }`.
+ */
+class KmpLibraryConventionPlugin : Plugin<Project> {
+    override fun apply(target: Project) {
+        with(target) {
+            pluginManager.apply(libs.pluginId("kotlin-multiplatform"))
+            pluginManager.apply(libs.pluginId("android-kotlin-multiplatform-library"))
+
+            extensions.configure<KotlinMultiplatformExtension> {
+                extensions.configure<KotlinMultiplatformAndroidLibraryTarget> {
+                    compileSdk = AndroidConfig.COMPILE_SDK
+                    minSdk = AndroidConfig.MIN_SDK
+                    compilerOptions {
+                        jvmTarget.set(JvmTarget.fromTarget(AndroidConfig.JVM_TARGET.toString()))
+                    }
+                }
+
+                iosArm64()
+                iosSimulatorArm64()
+            }
+
+            dependencies {
+                add("commonTestImplementation", libs.library("kotlin-test"))
+            }
+        }
+    }
+}

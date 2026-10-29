@@ -6,6 +6,7 @@ group = "com.rsalanga.portfolio.buildlogic"
 
 dependencies {
     compileOnly(libs.android.gradlePlugin)
+    compileOnly(libs.kotlin.gradlePlugin)
 }
 
 gradlePlugin {
@@ -21,6 +22,10 @@ gradlePlugin {
         register("androidCompose") {
             id = "portfolio.android.compose"
             implementationClass = "com.rsalanga.portfolio.AndroidComposeConventionPlugin"
+        }
+        register("kmpLibrary") {
+            id = "portfolio.kmp.library"
+            implementationClass = "com.rsalanga.portfolio.KmpLibraryConventionPlugin"
         }
     }
 }

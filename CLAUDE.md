@@ -35,6 +35,7 @@ Included build (`pluginManagement { includeBuild("build-logic") }`) providing co
 - `portfolio.android.application` → `AndroidApplicationConventionPlugin` (sets targetSdk; release build has `optimization.enable = false`)
 - `portfolio.android.library` → `AndroidLibraryConventionPlugin`
 - `portfolio.android.compose` → `AndroidComposeConventionPlugin` — applied *alongside* one of the above; enables Compose and adds the Compose BOM/material3/tooling deps (plus `activity-compose` for applications)
+- `portfolio.kmp.library` → `KmpLibraryConventionPlugin` — Kotlin Multiplatform library (Android via AGP's `com.android.kotlin.multiplatform.library`, plus `iosArm64`/`iosSimulatorArm64`); adds `kotlin-test` to `commonTest`. Modules set `namespace` in `kotlin { android { } }`. Example: `:roadmap:shared`
 
 Convention plugins resolve plugin IDs and libraries from the version catalog via the `Project.libs` helpers in `VersionCatalog.kt` (`libs.pluginId(...)`, `libs.library(...)`) rather than hardcoding coordinates.
 

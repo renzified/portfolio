@@ -30,6 +30,7 @@
             <option value="$PROJECT_DIR$/patterns/mvvm" />
             <option value="$PROJECT_DIR$/roadmap" />
             <option value="$PROJECT_DIR$/roadmap/android" />
+            <option value="$PROJECT_DIR$/roadmap/shared" />
           </set>
         </option>
       </GradleProjectSettings>
