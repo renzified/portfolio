@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.rsalanga.roadmap.pages.home.HomeScreen
 import com.rsalanga.roadmap.shared.Greeting
 import com.rsalanga.roadmap.ui.RoadmapTheme
@@ -22,6 +23,7 @@ import com.rsalanga.roadmap.ui.RoadmapTheme
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
         super.onCreate(savedInstanceState)
 
         enableEdgeToEdge(

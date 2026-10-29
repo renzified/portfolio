@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App icon (same in light and dark). -->
+    <color name="roadmap_icon_background">#FF00687A</color>
+    <color name="roadmap_icon_decor">#FF1A7D8F</color>
+    <color name="roadmap_icon_road">#FFACEDFF</color>
+    <color name="roadmap_icon_spark">#FFFFB596</color>
+    <!-- Splash window: surface. -->
+    <color name="roadmap_splash_background">#FFF6FAFB</color>
+</resources>

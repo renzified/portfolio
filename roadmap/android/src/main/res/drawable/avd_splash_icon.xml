@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+    <aapt:attr name="android:drawable">
+        <vector
+            android:width="240dp"
+            android:height="240dp"
+            android:viewportWidth="108"
+            android:viewportHeight="108">
+            <group
+                android:name="cookie_group"
+                android:pivotX="54"
+                android:pivotY="54"
+                android:rotation="-40"
+                android:scaleX="0.85"
+                android:scaleY="0.85">
+                <path
+                    android:pathData="M87.2,54.0L86.7,56.3L85.4,58.4L83.7,60.3L82.1,62.1L81.1,63.9L80.7,65.9L80.8,68.2L80.9,70.8L80.5,73.3L79.4,75.3L77.6,76.8L75.2,77.5L72.7,77.9L70.3,78.2L68.4,78.9L66.8,80.3L65.4,82.1L63.8,84.1L61.9,85.8L59.8,86.7L57.4,86.6L55.1,85.7L52.9,84.3L50.9,83.1L49.0,82.4L46.9,82.4L44.6,82.8L42.1,83.4L39.6,83.5L37.4,82.8L35.7,81.2L34.5,79.0L33.7,76.5L33.0,74.3L31.9,72.5L30.4,71.2L28.3,70.1L26.0,68.9L24.1,67.3L22.8,65.4L22.5,63.0L23.0,60.6L24.0,58.2L24.9,56.0L25.2,54.0L24.9,52.0L24.0,49.8L23.0,47.4L22.5,45.0L22.8,42.6L24.1,40.7L26.0,39.1L28.3,37.9L30.4,36.8L31.9,35.5L33.0,33.7L33.7,31.5L34.5,29.0L35.7,26.8L37.4,25.2L39.6,24.5L42.1,24.6L44.6,25.2L46.9,25.6L49.0,25.6L50.9,24.9L52.9,23.7L55.1,22.3L57.4,21.4L59.8,21.3L61.9,22.2L63.8,23.9L65.4,25.9L66.8,27.7L68.4,29.1L70.3,29.8L72.7,30.1L75.2,30.5L77.6,31.2L79.4,32.7L80.5,34.7L80.9,37.2L80.8,39.8L80.7,42.1L81.1,44.1L82.1,45.9L83.7,47.7L85.4,49.6L86.7,51.7Z"
+                    android:fillColor="@color/roadmap_icon_decor" />
+            </group>
+            <path
+                android:name="road"
+                android:pathData="M38,76C52,76 60,68 54,58C48,48 50,43 60,42"
+                android:strokeColor="@color/roadmap_icon_road"
+                android:strokeWidth="8"
+                android:strokeLineCap="round"
+                android:trimPathEnd="0" />
+            <path
+                android:name="dots"
+                android:pathData="M43.27,75.42a0.9,0.9 0,1 0,1.8,0a0.9,0.9 0,1 0,-1.8,0M49.11,73.40a0.9,0.9 0,1 0,1.8,0a0.9,0.9 0,1 0,-1.8,0M53.70,69.34a0.9,0.9 0,1 0,1.8,0a0.9,0.9 0,1 0,-1.8,0M55.05,63.40a0.9,0.9 0,1 0,1.8,0a0.9,0.9 0,1 0,-1.8,0M52.89,57.64a0.9,0.9 0,1 0,1.8,0a0.9,0.9 0,1 0,-1.8,0M50.28,52.04a0.9,0.9 0,1 0,1.8,0a0.9,0.9 0,1 0,-1.8,0M50.38,46.01a0.9,0.9 0,1 0,1.8,0a0.9,0.9 0,1 0,-1.8,0M55.39,42.65a0.9,0.9 0,1 0,1.8,0a0.9,0.9 0,1 0,-1.8,0"
+                android:fillColor="@color/roadmap_icon_background"
+                android:fillAlpha="0" />
+            <path
+                android:pathData="M32,76a6,6 0,1 0,12,0a6,6 0,1 0,-12,0"
+                android:fillColor="@color/roadmap_icon_road" />
+            <group
+                android:name="spark_group"
+                android:pivotX="70"
+                android:pivotY="38"
+                android:scaleX="0"
+                android:scaleY="0">
+                <path
+                    android:pathData="M70,29c0.47,5.53 3.47,8.53 9,9c-5.53,0.47 -8.53,3.47 -9,9c-0.47,-5.53 -3.47,-8.53 -9,-9c5.53,-0.47 8.53,-3.47 9,-9z"
+                    android:fillColor="@color/roadmap_icon_spark" />
+            </group>
+        </vector>
+    </aapt:attr>
+
+    <target android:name="cookie_group">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                    android:propertyName="rotation"
+                    android:valueFrom="-40"
+                    android:valueTo="0"
+                    android:duration="550"
+                    android:interpolator="@android:interpolator/fast_out_slow_in" />
+                <objectAnimator
+                    android:propertyName="scaleX"
+                    android:valueFrom="0.85"
+                    android:valueTo="1"
+                    android:duration="550"
+                    android:interpolator="@android:interpolator/fast_out_slow_in" />
+                <objectAnimator
+                    android:propertyName="scaleY"
+                    android:valueFrom="0.85"
+                    android:valueTo="1"
+                    android:duration="550"
+                    android:interpolator="@android:interpolator/fast_out_slow_in" />
+            </set>
+        </aapt:attr>
+    </target>
+
+    <target android:name="road">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:propertyName="trimPathEnd"
+                android:valueFrom="0"
+                android:valueTo="1"
+                android:startOffset="250"
+                android:duration="300"
+                android:interpolator="@android:interpolator/linear_out_slow_in" />
+        </aapt:attr>
+    </target>
+
+    <target android:name="dots">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:propertyName="fillAlpha"
+                android:valueFrom="0"
+                android:valueTo="1"
+                android:startOffset="520"
+                android:duration="120" />
+        </aapt:attr>
+    </target>
+
+    <target android:name="spark_group">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                    android:propertyName="scaleX"
+                    android:valueFrom="0"
+                    android:valueTo="1"
+                    android:startOffset="480"
+                    android:duration="320"
+                    android:interpolator="@android:anim/overshoot_interpolator" />
+                <objectAnimator
+                    android:propertyName="scaleY"
+                    android:valueFrom="0"
+                    android:valueTo="1"
+                    android:startOffset="480"
+                    android:duration="320"
+                    android:interpolator="@android:anim/overshoot_interpolator" />
+            </set>
+        </aapt:attr>
+    </target>
+</animated-vector>
