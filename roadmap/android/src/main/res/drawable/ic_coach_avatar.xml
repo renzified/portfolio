@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Coach avatar in chat. Colors: primaryContainer / onPrimaryContainer. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="36dp"
+    android:height="36dp"
+    android:viewportWidth="36"
+    android:viewportHeight="36">
+    <path
+        android:pathData="M13,6h10a7,7 0,0 1,7,7v10a7,7 0,0 1,-7,7h-10a7,7 0,0 1,-7,-7v-10a7,7 0,0 1,7,-7z"
+        android:fillColor="#FFACEDFF" />
+    <group android:rotation="45" android:pivotX="18" android:pivotY="18">
+    <path
+        android:pathData="M13,6h10a7,7 0,0 1,7,7v10a7,7 0,0 1,-7,7h-10a7,7 0,0 1,-7,-7v-10a7,7 0,0 1,7,-7z"
+        android:fillColor="#FFACEDFF" />
+    </group>
+    <path
+        android:pathData="M18,10.5c.3,3.5 2.2,5.4 5.7,5.7-3.5,.3-5.4,2.2-5.7,5.7-.3-3.5-2.2-5.4-5.7-5.7 3.5-.3 5.4-2.2 5.7-5.7z"
+        android:fillColor="#FF001F26" />
+</vector>

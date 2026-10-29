@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Decorative card-header shape. Tint with primaryDecor / studyDecor / primary. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="150dp"
+    android:height="150dp"
+    android:viewportWidth="150"
+    android:viewportHeight="150">
+    <path
+        android:pathData="M55,25h40a30,30 0,0 1,30,30v40a30,30 0,0 1,-30,30h-40a30,30 0,0 1,-30,-30v-40a30,30 0,0 1,30,-30z"
+        android:fillColor="#FF000000" />
+    <group android:rotation="30" android:pivotX="75" android:pivotY="75">
+    <path
+        android:pathData="M55,25h40a30,30 0,0 1,30,30v40a30,30 0,0 1,-30,30h-40a30,30 0,0 1,-30,-30v-40a30,30 0,0 1,30,-30z"
+        android:fillColor="#FF000000" />
+    </group>
+    <group android:rotation="60" android:pivotX="75" android:pivotY="75">
+    <path
+        android:pathData="M55,25h40a30,30 0,0 1,30,30v40a30,30 0,0 1,-30,30h-40a30,30 0,0 1,-30,-30v-40a30,30 0,0 1,30,-30z"
+        android:fillColor="#FF000000" />
+    </group>
+</vector>

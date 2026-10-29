@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Coach hero mark (Coach step 1). Colors: primaryContainer / onPrimaryContainer. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="72dp"
+    android:height="72dp"
+    android:viewportWidth="72"
+    android:viewportHeight="72">
+    <path
+        android:pathData="M27,12h18a15,15 0,0 1,15,15v18a15,15 0,0 1,-15,15h-18a15,15 0,0 1,-15,-15v-18a15,15 0,0 1,15,-15z"
+        android:fillColor="#FFACEDFF" />
+    <group android:rotation="30" android:pivotX="36" android:pivotY="36">
+    <path
+        android:pathData="M27,12h18a15,15 0,0 1,15,15v18a15,15 0,0 1,-15,15h-18a15,15 0,0 1,-15,-15v-18a15,15 0,0 1,15,-15z"
+        android:fillColor="#FFACEDFF" />
+    </group>
+    <group android:rotation="60" android:pivotX="36" android:pivotY="36">
+    <path
+        android:pathData="M27,12h18a15,15 0,0 1,15,15v18a15,15 0,0 1,-15,15h-18a15,15 0,0 1,-15,-15v-18a15,15 0,0 1,15,-15z"
+        android:fillColor="#FFACEDFF" />
+    </group>
+    <path
+        android:pathData="M36,20c.6,7.4 4.6,11.4 12,12-7.4,.6-11.4,4.6-12,12-.6-7.4-4.6-11.4-12-12 7.4-.6 11.4-4.6 12-12z"
+        android:fillColor="#FF001F26" />
+</vector>
