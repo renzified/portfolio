@@ -7,4 +7,10 @@
     <color name="roadmap_icon_spark">#FFFFB596</color>
     <!-- Splash window: surface. -->
     <color name="roadmap_splash_background">#FFF6FAFB</color>
+    <!-- Coach mascot (body never changes) and the splash wordmark, which also colours its spark. -->
+    <color name="roadmap_mascot_body">#FFFFB596</color>
+    <color name="roadmap_mascot_fold">#FFE3825C</color>
+    <color name="roadmap_mascot_face">#FF351000</color>
+    <color name="roadmap_mascot_cheek">#FFFF8466</color>
+    <color name="roadmap_wordmark">#FF00687A</color>
 </resources>
