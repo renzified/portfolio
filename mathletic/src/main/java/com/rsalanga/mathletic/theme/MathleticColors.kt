@@ -19,10 +19,10 @@ enum class SkillCategory { Arithmetic, Percentages, Fractions, PowersRoots, Numb
 
 @Immutable
 data class ModeColors(
-    val accent: Color,      // icon tile, Start button, HUD highlights
+    val accent: Color, // icon tile, Start button, HUD highlights
     val onAccent: Color,
-    val container: Color,   // HUD card, rules panel
-    val onContainer: Color,
+    val container: Color, // HUD card, rules panel
+    val onContainer: Color
 )
 
 @Immutable
@@ -32,13 +32,16 @@ data class MathleticColors(
     val survival: ModeColors,
     val practice: ModeColors,
     val categories: Map<SkillCategory, Color>,
-    val correct: Color,          // question card flash
-    val correctStrong: Color,    // picked choice that was right
+    val correct: Color, // question card flash
+    // picked choice that was right
+    val correctStrong: Color,
     val incorrect: Color,
     val incorrectStrong: Color,
     val onFeedback: Color,
-    val mastery: Color,          // progress rings and bars
-    val heart: Color,            // Survival lives
+    // progress rings and bars
+    val mastery: Color,
+    // Survival lives
+    val heart: Color
 ) {
     fun mode(mode: GameMode): ModeColors = when (mode) {
         GameMode.Sprint -> sprint
@@ -63,7 +66,7 @@ val LightMathleticColors = MathleticColors(
         SkillCategory.Fractions to Color(0xFFD8ECFF),
         SkillCategory.PowersRoots to Color(0xFFFFEFB8),
         SkillCategory.NumberSense to Color(0xFFDDF3E5),
-        SkillCategory.Everyday to Color(0xFFFFD9DF),
+        SkillCategory.Everyday to Color(0xFFFFD9DF)
     ),
     correct = Color(0xFFDDF3E5),
     correctStrong = Color(0xFF9BE0B4),
@@ -71,21 +74,31 @@ val LightMathleticColors = MathleticColors(
     incorrectStrong = Color(0xFFFFB3B3),
     onFeedback = Ink,
     mastery = Color(0xFF26784C),
-    heart = Color(0xFFF0577A),
+    heart = Color(0xFFF0577A)
 )
 
 val DarkMathleticColors = MathleticColors(
     sprint = ModeColors(Color(0xFFFF8F4F), Color(0xFF2A1204), Color(0xFF5A2A0E), Color(0xFFFFDCC4)),
     blitz = ModeColors(Color(0xFFFFC933), Color(0xFF2B1F00), Color(0xFF4D3A00), Color(0xFFFFEFB8)),
-    survival = ModeColors(Color(0xFFFF7D99), Color(0xFF3D0715), Color(0xFF5C1F2E), Color(0xFFFFD9DF)),
-    practice = ModeColors(Color(0xFFB9A6FF), Color(0xFF23135C), Color(0xFF3E2D8A), Color(0xFFE7DEFF)),
+    survival = ModeColors(
+        Color(0xFFFF7D99),
+        Color(0xFF3D0715),
+        Color(0xFF5C1F2E),
+        Color(0xFFFFD9DF)
+    ),
+    practice = ModeColors(
+        Color(0xFFB9A6FF),
+        Color(0xFF23135C),
+        Color(0xFF3E2D8A),
+        Color(0xFFE7DEFF)
+    ),
     categories = mapOf(
         SkillCategory.Arithmetic to Color(0xFF4A2E1A),
         SkillCategory.Percentages to Color(0xFF352B5C),
         SkillCategory.Fractions to Color(0xFF1E3550),
         SkillCategory.PowersRoots to Color(0xFF4A3D10),
         SkillCategory.NumberSense to Color(0xFF1E3D2B),
-        SkillCategory.Everyday to Color(0xFF4D2530),
+        SkillCategory.Everyday to Color(0xFF4D2530)
     ),
     correct = Color(0xFF1E3D2B),
     correctStrong = Color(0xFF2F6B47),
@@ -93,7 +106,7 @@ val DarkMathleticColors = MathleticColors(
     incorrectStrong = Color(0xFF7A2E2E),
     onFeedback = Color(0xFFF2E6DA),
     mastery = Color(0xFF7DD3A0),
-    heart = Color(0xFFFF7D99),
+    heart = Color(0xFFFF7D99)
 )
 
 val LocalMathleticColors = staticCompositionLocalOf { LightMathleticColors }

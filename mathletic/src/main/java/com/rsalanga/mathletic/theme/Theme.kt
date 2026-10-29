@@ -24,14 +24,16 @@ import androidx.compose.ui.platform.LocalContext
 fun MathleticTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     dynamicColor: Boolean = false,
-    content: @Composable () -> Unit,
+    content: @Composable () -> Unit
 ) {
     val colorScheme = when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
+
         darkTheme -> DarkColors
+
         else -> LightColors
     }
     val mathleticColors = if (darkTheme) DarkMathleticColors else LightMathleticColors
@@ -42,7 +44,7 @@ fun MathleticTheme(
             motionScheme = MotionScheme.expressive(),
             shapes = MathleticShapes,
             typography = MathleticTypography,
-            content = content,
+            content = content
         )
     }
 }

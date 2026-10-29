@@ -1,0 +1,60 @@
+name: Android CI
+
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches: [master]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: ${{ matrix.name }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Ktlint
+            task: ktlintCheck
+            reports: "**/build/reports/ktlint/"
+          - name: Detekt
+            task: detekt
+            reports: "**/build/reports/detekt/"
+          - name: Android Lint
+            task: lint
+            reports: "**/build/reports/lint-results-*.html"
+          - name: Tests
+            task: test
+            reports: "**/build/reports/tests/"
+
+    steps:
+      - uses: actions/checkout@v5
+
+      # Matches the Gradle daemon toolchain in gradle/gradle-daemon-jvm.properties.
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 25
+
+      - uses: gradle/actions/setup-gradle@v5
+        with:
+          cache-read-only: ${{ github.ref != 'refs/heads/master' }}
+
+      - name: Run ${{ matrix.task }}
+        run: ./gradlew ${{ matrix.task }} --continue
+
+      - name: Upload reports
+        if: failure()
+        uses: actions/upload-artifact@v5
+        with:
+          name: ${{ matrix.task }}-reports
+          path: ${{ matrix.reports }}
+          if-no-files-found: ignore

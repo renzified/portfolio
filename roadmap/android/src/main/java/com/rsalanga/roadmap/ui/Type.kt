@@ -17,22 +17,26 @@ import com.rsalanga.roadmap.R
 //   res/font/manrope.ttf   ← Manrope[wght].ttf
 // (Google Fonts, SIL Open Font License.)
 
+// Display optical size and softened serifs, as in the design.
+private const val FRAUNCES_OPTICAL_SIZE = 72f
+private const val FRAUNCES_SOFTNESS = 50f
+
 @OptIn(ExperimentalTextApi::class)
 private fun fraunces(weight: Int) = Font(
     resId = R.font.fraunces,
     weight = FontWeight(weight),
     variationSettings = FontVariation.Settings(
         FontVariation.weight(weight),
-        FontVariation.Setting("opsz", 72f), // display optical size
-        FontVariation.Setting("SOFT", 50f), // softened serifs, as in the design
-    ),
+        FontVariation.Setting("opsz", FRAUNCES_OPTICAL_SIZE),
+        FontVariation.Setting("SOFT", FRAUNCES_SOFTNESS)
+    )
 )
 
 @OptIn(ExperimentalTextApi::class)
 private fun manrope(weight: Int) = Font(
     resId = R.font.manrope,
     weight = FontWeight(weight),
-    variationSettings = FontVariation.Settings(FontVariation.weight(weight)),
+    variationSettings = FontVariation.Settings(FontVariation.weight(weight))
 )
 
 /** Headings, hero text, large numbers. */
@@ -40,7 +44,7 @@ val RoadmapDisplayFontFamily: FontFamily = FontFamily(
     fraunces(400),
     fraunces(500),
     fraunces(600),
-    fraunces(700),
+    fraunces(700)
 )
 
 /** Body, labels, buttons, navigation. */
@@ -50,7 +54,7 @@ val RoadmapFontFamily: FontFamily = FontFamily(
     manrope(500),
     manrope(600),
     manrope(700),
-    manrope(800),
+    manrope(800)
 )
 
 private fun style(
@@ -58,13 +62,13 @@ private fun style(
     size: Int,
     lineHeight: Int,
     weight: Int,
-    letterSpacing: Double = 0.0,
+    letterSpacing: Double = 0.0
 ) = TextStyle(
     fontFamily = family,
     fontSize = size.sp,
     lineHeight = lineHeight.sp,
     fontWeight = FontWeight(weight),
-    letterSpacing = letterSpacing.sp,
+    letterSpacing = letterSpacing.sp
 )
 
 private fun display(size: Int, lineHeight: Int, weight: Int, letterSpacing: Double = 0.0) =
@@ -121,7 +125,7 @@ val RoadmapTypography = Typography(
     // Selected nav label
     labelMediumEmphasized = text(12, 16, 700, 0.3),
     // Day abbreviations — "MON"
-    labelSmallEmphasized = text(11, 16, 700),
+    labelSmallEmphasized = text(11, 16, 700)
 )
 
 /** Overline used on study cards ("SPANISH · WEEK 2"). */

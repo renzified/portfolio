@@ -8,16 +8,13 @@ import com.rsalanga.roadmap.pages.coach.conversation.components.ConversationTopA
 import com.rsalanga.roadmap.ui.RoadmapTheme
 
 @Composable
-internal fun ConversationScreen(
-    onBack: () -> Unit
-) {
+internal fun ConversationScreen(onBack: () -> Unit) {
     Scaffold(
         topBar = {
             ConversationTopAppBar(onBack = onBack)
         },
         contentWindowInsets = WindowInsets()
     ) { innerPadding ->
-
     }
 }
 

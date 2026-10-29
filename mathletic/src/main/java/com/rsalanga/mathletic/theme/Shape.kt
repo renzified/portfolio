@@ -7,11 +7,11 @@ import androidx.compose.ui.unit.dp
 // Corner sizes taken from the designs. M3 components pick these up
 // automatically (buttons use full/large, cards medium/large, sheets extraLarge).
 val MathleticShapes = Shapes(
-    extraSmall = RoundedCornerShape(8.dp),   // connected button-group inner corners
-    small = RoundedCornerShape(12.dp),       // chips, small icon tiles
-    medium = RoundedCornerShape(20.dp),      // stat cards, list rows, keypad keys
-    large = RoundedCornerShape(28.dp),       // mode rows, skill card, HUD card
-    extraLarge = RoundedCornerShape(32.dp),  // bottom sheets, hero, question card
+    extraSmall = RoundedCornerShape(8.dp), // connected button-group inner corners
+    small = RoundedCornerShape(12.dp), // chips, small icon tiles
+    medium = RoundedCornerShape(20.dp), // stat cards, list rows, keypad keys
+    large = RoundedCornerShape(28.dp), // mode rows, skill card, HUD card
+    extraLarge = RoundedCornerShape(32.dp) // bottom sheets, hero, question card
 )
 
 // Expressive asymmetric shapes used on the 2×2 mode tiles and choice buttons.

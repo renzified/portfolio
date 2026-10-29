@@ -20,15 +20,12 @@ internal data object SettingsRoute : NavKey
 @Serializable
 internal data object ConversationRoute : NavKey
 
-internal data class HomeTab(
-    val label: String,
-    @param:DrawableRes val icon: Int,
-)
+internal data class HomeTab(val label: String, @param:DrawableRes val icon: Int)
 
 /** Bottom nav tabs, in display order. The first entry is the start route. */
 internal val HomeTabs: Map<NavKey, HomeTab> = linkedMapOf(
     CalendarRoute to HomeTab(label = "Calendar", icon = R.drawable.ic_calendar),
     PlansRoute to HomeTab(label = "Plans", icon = R.drawable.ic_plans),
     CoachRoute to HomeTab(label = "Coach", icon = R.drawable.ic_coach),
-    SettingsRoute to HomeTab(label = "Settings", icon = R.drawable.ic_settings_tune),
+    SettingsRoute to HomeTab(label = "Settings", icon = R.drawable.ic_settings_tune)
 )

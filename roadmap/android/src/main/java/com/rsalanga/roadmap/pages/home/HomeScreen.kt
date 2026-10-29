@@ -35,13 +35,17 @@ import com.rsalanga.roadmap.ui.RoadmapTheme
 internal fun HomeScreen() {
     val navigationState = rememberNavigationState(
         startRoute = CalendarRoute,
-        topLevelRoutes = HomeTabs.keys,
+        topLevelRoutes = HomeTabs.keys
     )
     val navigator = remember(navigationState) { Navigator(navigationState) }
 
     val entryProvider = entryProvider {
         entry<CalendarRoute> {
-            CalendarScreen(onClickLearnASkill = dropUnlessResumed { navigator.navigate(ConversationRoute) })
+            CalendarScreen(
+                onClickLearnASkill = dropUnlessResumed {
+                    navigator.navigate(ConversationRoute)
+                }
+            )
         }
         entry<PlansRoute> { PlansScreen() }
         entry<CoachRoute> { CoachScreen() }
@@ -58,8 +62,10 @@ internal fun HomeScreen() {
                     NavigationBarItem(
                         selected = route == navigationState.topLevelRoute,
                         onClick = { navigator.navigate(route) },
-                        icon = { Icon(painter = painterResource(tab.icon), contentDescription = null) },
-                        label = { Text(tab.label) },
+                        icon = {
+                            Icon(painter = painterResource(tab.icon), contentDescription = null)
+                        },
+                        label = { Text(tab.label) }
                     )
                 }
             }
@@ -70,7 +76,7 @@ internal fun HomeScreen() {
             onBack = navigator::goBack,
             modifier = Modifier
                 .padding(innerPadding)
-                .consumeWindowInsets(innerPadding),
+                .consumeWindowInsets(innerPadding)
         )
     }
 }
