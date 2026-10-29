@@ -17,6 +17,9 @@ internal data object CoachRoute : NavKey
 @Serializable
 internal data object SettingsRoute : NavKey
 
+@Serializable
+internal data object ConversationRoute : NavKey
+
 internal data class HomeTab(
     val label: String,
     @param:DrawableRes val icon: Int,

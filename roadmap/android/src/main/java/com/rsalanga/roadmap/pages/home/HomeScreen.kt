@@ -13,12 +13,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.compose.dropUnlessResumed
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.ui.NavDisplay
 import com.rsalanga.roadmap.pages.calendar.CalendarScreen
 import com.rsalanga.roadmap.pages.coach.CoachScreen
+import com.rsalanga.roadmap.pages.coach.conversation.ConversationScreen
 import com.rsalanga.roadmap.pages.home.navigation.CalendarRoute
 import com.rsalanga.roadmap.pages.home.navigation.CoachRoute
+import com.rsalanga.roadmap.pages.home.navigation.ConversationRoute
 import com.rsalanga.roadmap.pages.home.navigation.HomeTabs
 import com.rsalanga.roadmap.pages.home.navigation.Navigator
 import com.rsalanga.roadmap.pages.home.navigation.PlansRoute
@@ -37,10 +40,13 @@ internal fun HomeScreen() {
     val navigator = remember(navigationState) { Navigator(navigationState) }
 
     val entryProvider = entryProvider {
-        entry<CalendarRoute> { CalendarScreen() }
+        entry<CalendarRoute> {
+            CalendarScreen(onClickLearnASkill = dropUnlessResumed { navigator.navigate(ConversationRoute) })
+        }
         entry<PlansRoute> { PlansScreen() }
         entry<CoachRoute> { CoachScreen() }
         entry<SettingsRoute> { SettingScreen() }
+        entry<ConversationRoute> { ConversationScreen(onBack = navigator::goBack) }
     }
 
     Scaffold(
