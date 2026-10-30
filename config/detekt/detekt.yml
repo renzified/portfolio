@@ -3,6 +3,8 @@
 naming:
   FunctionNaming:
     ignoreAnnotated: ['Composable']
+    # Defaults plus the AGP KMP test source sets (androidHostTest/androidDeviceTest).
+    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/androidUnitTest/**', '**/androidInstrumentedTest/**', '**/jsTest/**', '**/iosTest/**', '**/androidHostTest/**', '**/androidDeviceTest/**']
   TopLevelPropertyNaming:
     constantPattern: '[A-Z][A-Za-z0-9_]*'
   # Compose theme files (Color.kt, Type.kt) commonly hold a differently named object.
@@ -20,6 +22,7 @@ style:
     ignorePropertyDeclaration: true
     ignoreCompanionObjectPropertyDeclaration: true
     ignoreAnnotated: ['Composable', 'Preview']
+    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/androidUnitTest/**', '**/androidInstrumentedTest/**', '**/jsTest/**', '**/iosTest/**', '**/androidHostTest/**', '**/androidDeviceTest/**', '**/*.kts']
   UnusedPrivateFunction:
     ignoreAnnotated: ['Preview']
   ForbiddenComment:
