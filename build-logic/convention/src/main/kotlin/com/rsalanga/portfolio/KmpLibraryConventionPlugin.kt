@@ -26,6 +26,10 @@ class KmpLibraryConventionPlugin : Plugin<Project> {
                     compilerOptions {
                         jvmTarget.set(JvmTarget.fromTarget(AndroidConfig.JVM_TARGET.toString()))
                     }
+                    // Instrumented tests live in src/androidDeviceTest.
+                    withDeviceTest {
+                        instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+                    }
                 }
 
                 iosArm64()
@@ -34,6 +38,8 @@ class KmpLibraryConventionPlugin : Plugin<Project> {
 
             dependencies {
                 add("commonTestImplementation", libs.library("kotlin-test"))
+                add("androidDeviceTestImplementation", libs.library("androidx-junit"))
+                add("androidDeviceTestImplementation", libs.library("androidx-test-runner"))
             }
         }
     }

@@ -1,7 +1,8 @@
 package com.rsalanga.roadmap.shared.data.local.entity
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.datetime.DayOfWeek
 
 @Entity
-data class PreferredDayEntity(val id: Long, val planId: Long, val dayOfWeek: DayOfWeek)
+data class DayEntity(@PrimaryKey val id: Long, val planId: Long, val dayOfWeek: DayOfWeek)
