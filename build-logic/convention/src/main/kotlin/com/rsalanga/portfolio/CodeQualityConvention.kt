@@ -16,6 +16,11 @@ internal fun Project.configureCodeQuality() {
     extensions.configure<KtlintExtension> {
         version.set(libs.findVersion("ktlint").get().requiredVersion)
         android.set(true)
+        // KSP (e.g. Room) adds its output to the source sets; don't lint generated code.
+        val generatedDir = layout.buildDirectory.dir("generated").get().asFile
+        filter {
+            exclude { it.file.startsWith(generatedDir) }
+        }
     }
 
     extensions.configure<DetektExtension> {

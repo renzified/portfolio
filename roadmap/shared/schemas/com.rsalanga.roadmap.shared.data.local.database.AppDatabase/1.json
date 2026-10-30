@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "9d8923bcded97a4aa13baba13ea62d88",
+    "identityHash": "d55de80ae5230c2ec3a4a38c99c7d235",
     "entities": [
       {
         "tableName": "DayEntity",
@@ -32,7 +32,18 @@
           "columnNames": [
             "id"
           ]
-        }
+        },
+        "indices": [
+          {
+            "name": "index_DayEntity_dayOfWeek",
+            "unique": true,
+            "columnNames": [
+              "dayOfWeek"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_DayEntity_dayOfWeek` ON `${TABLE_NAME}` (`dayOfWeek`)"
+          }
+        ]
       },
       {
         "tableName": "PlanEntity",
@@ -156,7 +167,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '9d8923bcded97a4aa13baba13ea62d88')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'd55de80ae5230c2ec3a4a38c99c7d235')"
     ]
   }
 }

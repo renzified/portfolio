@@ -39,7 +39,8 @@ class TopicDaoTest {
         dao.insert(TopicEntity(id = 2, planId = 10, status = TopicStatus.DONE, name = "Flows"))
 
         val rows = database.queryRows(
-            "SELECT id, planId, status, name FROM TopicEntity ORDER BY id"
+            "SELECT ${TopicEntity.ID}, ${TopicEntity.PLAN_ID}, ${TopicEntity.STATUS}, " +
+                "${TopicEntity.NAME} FROM ${TopicEntity.TABLE_NAME} ORDER BY ${TopicEntity.ID}"
         ) {
             listOf(it.getLong(0), it.getLong(1), it.getText(2), it.getText(3))
         }
@@ -67,10 +68,10 @@ class TopicDaoTest {
             }
         }
 
-        assertEquals(1L, database.count("TopicEntity"))
+        assertEquals(1L, database.count(TopicEntity.TABLE_NAME))
         assertEquals(
             listOf("Coroutines"),
-            database.queryRows("SELECT name FROM TopicEntity") {
+            database.queryRows("SELECT ${TopicEntity.NAME} FROM ${TopicEntity.TABLE_NAME}") {
                 it.getText(0)
             }
         )

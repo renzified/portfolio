@@ -36,7 +36,10 @@ class DayDaoTest {
         dao.insert(DayEntity(id = 1, planId = 10, dayOfWeek = DayOfWeek.MONDAY))
         dao.insert(DayEntity(id = 2, planId = 10, dayOfWeek = DayOfWeek.SUNDAY))
 
-        val rows = database.queryRows("SELECT id, planId, dayOfWeek FROM DayEntity ORDER BY id") {
+        val rows = database.queryRows(
+            "SELECT ${DayEntity.ID}, ${DayEntity.PLAN_ID}, ${DayEntity.DAY_OF_WEEK} " +
+                "FROM ${DayEntity.TABLE_NAME} ORDER BY ${DayEntity.ID}"
+        ) {
             Triple(it.getLong(0), it.getLong(1), it.getLong(2))
         }
 
@@ -51,12 +54,36 @@ class DayDaoTest {
             runBlocking { dao.insert(DayEntity(id = 1, planId = 20, dayOfWeek = DayOfWeek.FRIDAY)) }
         }
 
-        assertEquals(1L, database.count("DayEntity"))
+        assertEquals(1L, database.count(DayEntity.TABLE_NAME))
         assertEquals(
             listOf(10L),
-            database.queryRows("SELECT planId FROM DayEntity") {
+            database.queryRows("SELECT ${DayEntity.PLAN_ID} FROM ${DayEntity.TABLE_NAME}") {
                 it.getLong(0)
             }
         )
+    }
+
+    @Test
+    fun insert_withDuplicatePlanAndDay_throwsAndKeepsOriginal() = runTest {
+        dao.insert(DayEntity(id = 1, planId = 10, dayOfWeek = DayOfWeek.MONDAY))
+
+        assertThrows(SQLiteException::class.java) {
+            runBlocking { dao.insert(DayEntity(id = 2, planId = 10, dayOfWeek = DayOfWeek.MONDAY)) }
+        }
+
+        assertEquals(
+            listOf(1L),
+            database.queryRows("SELECT ${DayEntity.ID} FROM ${DayEntity.TABLE_NAME}") {
+                it.getLong(0)
+            }
+        )
+    }
+
+    @Test
+    fun insert_withSameDayInDifferentPlans_storesBoth() = runTest {
+        dao.insert(DayEntity(id = 1, planId = 10, dayOfWeek = DayOfWeek.MONDAY))
+        dao.insert(DayEntity(id = 2, planId = 20, dayOfWeek = DayOfWeek.MONDAY))
+
+        assertEquals(2L, database.count(DayEntity.TABLE_NAME))
     }
 }

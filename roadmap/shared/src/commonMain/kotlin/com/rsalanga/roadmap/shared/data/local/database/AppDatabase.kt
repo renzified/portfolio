@@ -16,7 +16,7 @@ import com.rsalanga.roadmap.shared.data.local.entity.TopicEntity
 
 @Database(
     entities = [DayEntity::class, PlanEntity::class, TaskEntity::class, TopicEntity::class],
-    version = 1
+    version = 2
 )
 @TypeConverters(Converters::class)
 @ConstructedBy(AppDatabaseConstructor::class)

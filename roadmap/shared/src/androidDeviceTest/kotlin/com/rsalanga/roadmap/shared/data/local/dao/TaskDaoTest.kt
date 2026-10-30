@@ -41,7 +41,8 @@ class TaskDaoTest {
         )
 
         val rows = database.queryRows(
-            "SELECT id, topicId, status, details FROM TaskEntity ORDER BY id"
+            "SELECT ${TaskEntity.ID}, ${TaskEntity.TOPIC_ID}, ${TaskEntity.STATUS}, " +
+                "${TaskEntity.DETAILS} FROM ${TaskEntity.TABLE_NAME} ORDER BY ${TaskEntity.ID}"
         ) {
             listOf(it.getLong(0), it.getLong(1), it.getText(2), it.getText(3))
         }
@@ -69,10 +70,10 @@ class TaskDaoTest {
             }
         }
 
-        assertEquals(1L, database.count("TaskEntity"))
+        assertEquals(1L, database.count(TaskEntity.TABLE_NAME))
         assertEquals(
             listOf("Read docs"),
-            database.queryRows("SELECT details FROM TaskEntity") {
+            database.queryRows("SELECT ${TaskEntity.DETAILS} FROM ${TaskEntity.TABLE_NAME}") {
                 it.getText(0)
             }
         )

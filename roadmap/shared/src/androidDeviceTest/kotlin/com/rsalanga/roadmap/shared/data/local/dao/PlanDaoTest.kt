@@ -49,7 +49,9 @@ class PlanDaoTest {
         dao.insert(plan)
 
         val row = database.queryRows(
-            "SELECT id, name, occurrence, commitmentPerOccurrence, preferredTime, sessionLength FROM PlanEntity"
+            "SELECT ${PlanEntity.ID}, ${PlanEntity.NAME}, ${PlanEntity.OCCURRENCE}, " +
+                "${PlanEntity.COMMITMENT_PER_OCCURRENCE}, ${PlanEntity.PREFERRED_TIME}, " +
+                "${PlanEntity.SESSION_LENGTH} FROM ${PlanEntity.TABLE_NAME}"
         ) {
             listOf(
                 it.getLong(0),
@@ -78,7 +80,9 @@ class PlanDaoTest {
     fun insert_withoutPreferredTime_storesNull() = runTest {
         dao.insert(plan.copy(preferredTime = null))
 
-        val preferredTime = database.queryRows("SELECT preferredTime FROM PlanEntity") {
+        val preferredTime = database.queryRows(
+            "SELECT ${PlanEntity.PREFERRED_TIME} FROM ${PlanEntity.TABLE_NAME}"
+        ) {
             if (it.isNull(0)) null else it.getText(0)
         }.single()
 
@@ -93,10 +97,10 @@ class PlanDaoTest {
             runBlocking { dao.insert(plan.copy(name = "Swift")) }
         }
 
-        assertEquals(1L, database.count("PlanEntity"))
+        assertEquals(1L, database.count(PlanEntity.TABLE_NAME))
         assertEquals(
             listOf("Kotlin"),
-            database.queryRows("SELECT name FROM PlanEntity") {
+            database.queryRows("SELECT ${PlanEntity.NAME} FROM ${PlanEntity.TABLE_NAME}") {
                 it.getText(0)
             }
         )
