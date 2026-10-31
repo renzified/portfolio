@@ -29,6 +29,8 @@
             <option value="$PROJECT_DIR$/roadmap" />
             <option value="$PROJECT_DIR$/roadmap/android" />
             <option value="$PROJECT_DIR$/roadmap/shared" />
+            <option value="$PROJECT_DIR$/roadmap/shared/data" />
+            <option value="$PROJECT_DIR$/roadmap/shared/domain" />
           </set>
         </option>
       </GradleProjectSettings>
