@@ -14,7 +14,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":roadmap:shared"))
+    implementation(project(":roadmap:shared:domain"))
+    implementation(project(":roadmap:shared:data"))
     implementation(libs.androidx.navigation3.runtime)
     implementation(libs.androidx.navigation3.ui)
     implementation(libs.androidx.core.splashscreen)

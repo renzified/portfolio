@@ -27,4 +27,5 @@ rootProject.name = "portfolio"
 include(":knowledgebase:insets")
 include(":mathletic")
 include(":roadmap:android")
-include(":roadmap:shared")
+include(":roadmap:shared:domain")
+include(":roadmap:shared:data")

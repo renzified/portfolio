@@ -43,7 +43,7 @@ Included build (`pluginManagement { includeBuild("build-logic") }`) providing co
 - `portfolio.android.application` → `AndroidApplicationConventionPlugin` (sets targetSdk; release build has `optimization.enable = false`)
 - `portfolio.android.library` → `AndroidLibraryConventionPlugin`
 - `portfolio.android.compose` → `AndroidComposeConventionPlugin` — applied *alongside* one of the above; enables Compose and adds the Compose BOM/material3/tooling deps (plus `activity-compose` for applications)
-- `portfolio.kmp.library` → `KmpLibraryConventionPlugin` — Kotlin Multiplatform library (Android via AGP's `com.android.kotlin.multiplatform.library`, plus `iosArm64`/`iosSimulatorArm64`); adds `kotlin-test` to `commonTest`. Modules set `namespace` in `kotlin { android { } }`. Example: `:roadmap:shared`
+- `portfolio.kmp.library` → `KmpLibraryConventionPlugin` — Kotlin Multiplatform library (Android via AGP's `com.android.kotlin.multiplatform.library`, plus `iosArm64`/`iosSimulatorArm64`); adds `kotlin-test` to `commonTest`. Modules set `namespace` in `kotlin { android { } }`. Examples: `:roadmap:shared:domain` (models + repository interfaces) and `:roadmap:shared:data` (Room implementation; `api`-depends on domain and builds the iOS `Shared` framework, re-exporting domain)
 
 All three base plugins also call `configureCodeQuality()` (`CodeQualityConvention.kt`), which applies ktlint and detekt; `configureAndroid()` adds the lint baseline and JUnit/Espresso test deps.
 
