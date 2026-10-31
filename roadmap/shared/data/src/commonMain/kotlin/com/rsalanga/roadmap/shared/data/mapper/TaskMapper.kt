@@ -10,7 +10,7 @@ internal fun TaskEntity.Status.toDomain() = when (this) {
 }
 
 internal fun TaskEntity.toDomain() = Task(
-    id = id,
+    id = Task.TaskId(id),
     status = status.toDomain(),
     details = details
 )

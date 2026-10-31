@@ -8,17 +8,21 @@ import kotlinx.coroutines.flow.Flow
 
 interface PlanRepository {
 
-    fun observePlans(): Flow<List<Plan>>
+    fun observe(): Flow<List<Plan>>
 
-    suspend fun savePlan(item: CreatePlan): AppResult<Unit, SavePlanError>
+    /** Emits `null` when the plan does not exist or has been deleted. */
+    fun observeBy(id: Plan.PlanId): Flow<Plan?>
 
-    suspend fun deletePlan(id: Long): AppResult<Unit, DeletePlanError>
+    suspend fun save(item: CreatePlan): AppResult<Plan.PlanId, SaveError>
 
-    enum class SavePlanError : DomainError {
+    suspend fun deleteBy(id: Plan.PlanId): AppResult<Unit, DeleteError>
+
+    enum class SaveError : DomainError {
         DATABASE_ERROR
     }
 
-    enum class DeletePlanError : DomainError {
-        DATABASE_ERROR
+    enum class DeleteError : DomainError {
+        DATABASE_ERROR,
+        ALREADY_DELETED
     }
 }

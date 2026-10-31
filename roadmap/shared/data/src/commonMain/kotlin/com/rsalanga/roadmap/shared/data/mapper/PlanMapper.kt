@@ -12,7 +12,7 @@ internal fun PlanEntity.Occurrence.toDomain() = when (this) {
 }
 
 internal fun PlanEntity.toDomain() = Plan(
-    id = id,
+    id = Plan.PlanId(id),
     name = name,
     occurrence = occurrence.toDomain(),
     commitmentPerOccurrence = commitmentPerOccurrence

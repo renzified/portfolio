@@ -11,7 +11,7 @@ internal fun TopicEntity.Status.toDomain() = when (this) {
 }
 
 internal fun TopicEntity.toDomain(tasks: List<Task>) = Topic(
-    id = id,
+    id = Topic.TopicId(id),
     status = status.toDomain(),
     name = name,
     tasks = tasks

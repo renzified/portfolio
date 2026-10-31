@@ -5,12 +5,12 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.RoomDatabaseConstructor
 import androidx.room.TypeConverters
-import com.rsalanga.roadmap.shared.data.local.dao.DayDao
 import com.rsalanga.roadmap.shared.data.local.dao.PlanDao
+import com.rsalanga.roadmap.shared.data.local.dao.PlanDayDao
 import com.rsalanga.roadmap.shared.data.local.dao.SessionDao
 import com.rsalanga.roadmap.shared.data.local.dao.TaskDao
 import com.rsalanga.roadmap.shared.data.local.dao.TopicDao
-import com.rsalanga.roadmap.shared.data.local.entity.DayEntity
+import com.rsalanga.roadmap.shared.data.local.entity.PlanDayEntity
 import com.rsalanga.roadmap.shared.data.local.entity.PlanEntity
 import com.rsalanga.roadmap.shared.data.local.entity.SessionEntity
 import com.rsalanga.roadmap.shared.data.local.entity.TaskEntity
@@ -18,7 +18,7 @@ import com.rsalanga.roadmap.shared.data.local.entity.TopicEntity
 
 @Database(
     entities = [
-        DayEntity::class,
+        PlanDayEntity::class,
         PlanEntity::class,
         SessionEntity::class,
         TaskEntity::class,
@@ -30,7 +30,7 @@ import com.rsalanga.roadmap.shared.data.local.entity.TopicEntity
 @ConstructedBy(AppDatabaseConstructor::class)
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun getDayDao(): DayDao
+    abstract fun getPlanDayDao(): PlanDayDao
 
     abstract fun getPlanDao(): PlanDao
 

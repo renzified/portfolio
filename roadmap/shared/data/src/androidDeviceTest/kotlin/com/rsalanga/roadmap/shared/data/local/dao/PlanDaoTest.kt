@@ -5,10 +5,12 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.rsalanga.roadmap.shared.data.local.database.AppDatabase
 import com.rsalanga.roadmap.shared.data.local.entity.PlanEntity
 import kotlin.time.Duration.Companion.hours
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
 import org.junit.Assert.assertThrows
 import org.junit.Before
 import org.junit.Test
@@ -72,7 +74,7 @@ class PlanDaoTest {
         dao.insert(plan)
         dao.insert(plan.copy(id = 2, name = "Swift"))
 
-        dao.deletePlan(1)
+        dao.deleteById(1)
 
         assertEquals(
             listOf("Swift"),
@@ -97,5 +99,30 @@ class PlanDaoTest {
                 it.getText(0)
             }
         )
+    }
+
+    @Test
+    fun getById_returnsMatchingPlan() = runTest {
+        dao.insert(plan)
+        dao.insert(plan.copy(id = 2, name = "Swift"))
+
+        assertEquals(plan, dao.getById(1).first())
+    }
+
+    @Test
+    fun getById_afterDelete_emitsNull() = runTest {
+        dao.insert(plan)
+
+        dao.deleteById(1)
+
+        assertNull(dao.getById(1).first())
+    }
+
+    @Test
+    fun deleteById_returnsAffectedRowCount() = runTest {
+        dao.insert(plan)
+
+        assertEquals(1, dao.deleteById(1))
+        assertEquals(0, dao.deleteById(1))
     }
 }

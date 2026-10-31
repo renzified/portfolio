@@ -2,10 +2,10 @@
   "formatVersion": 1,
   "database": {
     "version": 2,
-    "identityHash": "9e279c4eaa92d5f951db4187242d8381",
+    "identityHash": "00d3c43ab50ffa034eeca47b7a0f27f4",
     "entities": [
       {
-        "tableName": "day",
+        "tableName": "plan_day",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `plan_id` INTEGER NOT NULL, `day_of_week` INTEGER NOT NULL, FOREIGN KEY(`plan_id`) REFERENCES `plan`(`id`) ON UPDATE CASCADE ON DELETE CASCADE )",
         "fields": [
           {
@@ -35,14 +35,14 @@
         },
         "indices": [
           {
-            "name": "index_day_plan_id_day_of_week",
+            "name": "index_plan_day_plan_id_day_of_week",
             "unique": true,
             "columnNames": [
               "plan_id",
               "day_of_week"
             ],
             "orders": [],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_day_plan_id_day_of_week` ON `${TABLE_NAME}` (`plan_id`, `day_of_week`)"
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_plan_day_plan_id_day_of_week` ON `${TABLE_NAME}` (`plan_id`, `day_of_week`)"
           }
         ],
         "foreignKeys": [
@@ -277,7 +277,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '9e279c4eaa92d5f951db4187242d8381')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '00d3c43ab50ffa034eeca47b7a0f27f4')"
     ]
   }
 }

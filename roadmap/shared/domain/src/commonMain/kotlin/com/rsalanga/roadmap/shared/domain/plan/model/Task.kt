@@ -1,3 +1,9 @@
 package com.rsalanga.roadmap.shared.domain.plan.model
 
-data class Task(val id: Long, val status: TaskStatus, val details: String)
+import kotlin.jvm.JvmInline
+
+data class Task(val id: TaskId, val status: TaskStatus, val details: String) {
+
+    @JvmInline
+    value class TaskId(val value: Long)
+}

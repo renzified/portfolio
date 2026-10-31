@@ -15,23 +15,28 @@ import kotlinx.coroutines.flow.map
 
 class PlanRepositoryImpl(private val planDao: PlanDao) : PlanRepository {
 
-    override fun observePlans(): Flow<List<Plan>> = planDao.getPlans().map {
+    override fun observe(): Flow<List<Plan>> = planDao.getAll().map {
         it.map { item -> item.toDomain() }
     }.flowOn(Dispatchers.Default)
 
-    override suspend fun savePlan(item: CreatePlan): AppResult<Unit, PlanRepository.SavePlanError> =
+    override fun observeBy(id: Plan.PlanId): Flow<Plan?> =
+        planDao.getById(id.value).map { it?.toDomain() }.flowOn(Dispatchers.Default)
+
+    override suspend fun save(item: CreatePlan): AppResult<Plan.PlanId, PlanRepository.SaveError> =
         try {
-            planDao.insert(item.toEntity())
-            AppResult.Success(Unit)
+            AppResult.Success(Plan.PlanId(planDao.insert(item.toEntity())))
         } catch (_: SQLiteException) {
-            AppResult.Failure(PlanRepository.SavePlanError.DATABASE_ERROR)
+            AppResult.Failure(PlanRepository.SaveError.DATABASE_ERROR)
         }
 
-    override suspend fun deletePlan(id: Long): AppResult<Unit, PlanRepository.DeletePlanError> =
+    override suspend fun deleteBy(id: Plan.PlanId): AppResult<Unit, PlanRepository.DeleteError> =
         try {
-            planDao.deletePlan(id)
-            AppResult.Success(Unit)
+            if (planDao.deleteById(id.value) > 0) {
+                AppResult.Success(Unit)
+            } else {
+                AppResult.Failure(PlanRepository.DeleteError.ALREADY_DELETED)
+            }
         } catch (_: SQLiteException) {
-            AppResult.Failure(PlanRepository.DeletePlanError.DATABASE_ERROR)
+            AppResult.Failure(PlanRepository.DeleteError.DATABASE_ERROR)
         }
 }
