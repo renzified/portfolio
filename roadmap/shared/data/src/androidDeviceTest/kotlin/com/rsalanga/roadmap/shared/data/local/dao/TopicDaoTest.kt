@@ -3,7 +3,9 @@ package com.rsalanga.roadmap.shared.data.local.dao
 import androidx.sqlite.SQLiteException
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.rsalanga.roadmap.shared.data.local.database.AppDatabase
+import com.rsalanga.roadmap.shared.data.local.entity.TaskEntity
 import com.rsalanga.roadmap.shared.data.local.entity.TopicEntity
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runTest
 import org.junit.After
@@ -94,5 +96,51 @@ class TopicDaoTest {
                 it.getText(0)
             }
         )
+    }
+
+    @Test
+    fun getWithTasksByPlanId_returnsPlansTopicsWithTheirTasks() = runTest {
+        val topic =
+            TopicEntity(id = 1, planId = 10, status = TopicEntity.Status.PENDING, name = "Flows")
+        dao.insert(topic)
+        dao.insert(
+            TopicEntity(id = 2, planId = 20, status = TopicEntity.Status.PENDING, name = "Other")
+        )
+        val task =
+            TaskEntity(id = 1, topicId = 1, status = TaskEntity.Status.PENDING, details = "Read")
+        database.getTaskDao().insert(task)
+
+        val result = dao.getWithTasksByPlanId(10).first().single()
+
+        assertEquals(topic, result.topic)
+        assertEquals(listOf(task), result.tasks)
+    }
+
+    @Test
+    fun updateStatus_returnsAffectedRowCount() = runTest {
+        dao.insert(
+            TopicEntity(id = 1, planId = 10, status = TopicEntity.Status.PENDING, name = "Flows")
+        )
+
+        assertEquals(1, dao.updateStatus(1, TopicEntity.Status.DONE))
+        assertEquals(0, dao.updateStatus(99, TopicEntity.Status.DONE))
+        assertEquals(
+            TopicEntity.Status.DONE,
+            dao.getWithTasksByPlanId(10).first().single().topic.status
+        )
+    }
+
+    @Test
+    fun deleteById_alsoDeletesTopicsTasks() = runTest {
+        dao.insert(
+            TopicEntity(id = 1, planId = 10, status = TopicEntity.Status.PENDING, name = "Flows")
+        )
+        database.getTaskDao().insert(
+            TaskEntity(id = 1, topicId = 1, status = TaskEntity.Status.PENDING, details = "Read")
+        )
+
+        assertEquals(1, dao.deleteById(1))
+        assertEquals(0, dao.deleteById(1))
+        assertEquals(0L, database.count(TaskEntity.TABLE_NAME))
     }
 }

@@ -1,6 +1,7 @@
 package com.rsalanga.roadmap.shared.data.mapper
 
 import com.rsalanga.roadmap.shared.data.local.entity.TaskEntity
+import com.rsalanga.roadmap.shared.domain.plan.model.CreateTask
 import com.rsalanga.roadmap.shared.domain.plan.model.Task
 import com.rsalanga.roadmap.shared.domain.plan.model.TaskStatus
 
@@ -19,3 +20,9 @@ internal fun TaskStatus.toEntity() = when (this) {
     TaskStatus.PENDING -> TaskEntity.Status.PENDING
     TaskStatus.DONE -> TaskEntity.Status.DONE
 }
+
+internal fun CreateTask.toEntity() = TaskEntity(
+    topicId = topicId.value,
+    status = status.toEntity(),
+    details = details
+)

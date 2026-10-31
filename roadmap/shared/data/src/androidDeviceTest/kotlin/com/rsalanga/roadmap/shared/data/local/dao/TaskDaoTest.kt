@@ -4,6 +4,7 @@ import androidx.sqlite.SQLiteException
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.rsalanga.roadmap.shared.data.local.database.AppDatabase
 import com.rsalanga.roadmap.shared.data.local.entity.TaskEntity
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runTest
 import org.junit.After
@@ -100,5 +101,44 @@ class TaskDaoTest {
                 it.getText(0)
             }
         )
+    }
+
+    @Test
+    fun getByTopicId_returnsOnlyThatTopicsTasks() = runTest {
+        val task =
+            TaskEntity(id = 1, topicId = 10, status = TaskEntity.Status.PENDING, details = "Read")
+        dao.insert(task)
+        dao.insert(
+            TaskEntity(id = 2, topicId = 20, status = TaskEntity.Status.PENDING, details = "Other")
+        )
+
+        assertEquals(listOf(task), dao.getByTopicId(10).first())
+    }
+
+    @Test
+    fun updateStatus_changesOnlyMatchingTask() = runTest {
+        dao.insert(
+            TaskEntity(id = 1, topicId = 10, status = TaskEntity.Status.PENDING, details = "Read")
+        )
+        dao.insert(
+            TaskEntity(id = 2, topicId = 10, status = TaskEntity.Status.PENDING, details = "Write")
+        )
+
+        assertEquals(1, dao.updateStatus(1, TaskEntity.Status.DONE))
+        assertEquals(0, dao.updateStatus(99, TaskEntity.Status.DONE))
+        assertEquals(
+            listOf(TaskEntity.Status.DONE, TaskEntity.Status.PENDING),
+            dao.getByTopicId(10).first().sortedBy { it.id }.map { it.status }
+        )
+    }
+
+    @Test
+    fun deleteById_returnsAffectedRowCount() = runTest {
+        dao.insert(
+            TaskEntity(id = 1, topicId = 10, status = TaskEntity.Status.PENDING, details = "Read")
+        )
+
+        assertEquals(1, dao.deleteById(1))
+        assertEquals(0, dao.deleteById(1))
     }
 }

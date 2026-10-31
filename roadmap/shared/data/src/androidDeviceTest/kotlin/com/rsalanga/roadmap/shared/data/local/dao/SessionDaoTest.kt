@@ -5,6 +5,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.rsalanga.roadmap.shared.data.local.database.AppDatabase
 import com.rsalanga.roadmap.shared.data.local.entity.SessionEntity
 import kotlin.time.Duration.Companion.minutes
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runTest
 import kotlinx.datetime.LocalTime
@@ -80,5 +81,36 @@ class SessionDaoTest {
         }
 
         assertEquals(1L, database.count(SessionEntity.TABLE_NAME))
+    }
+
+    @Test
+    fun getByPlanId_returnsPlansSessionOrNull() = runTest {
+        dao.insert(session)
+
+        assertEquals(session, dao.getByPlanId(10).first())
+        assertNull(dao.getByPlanId(20).first())
+    }
+
+    @Test
+    fun update_changesStoredSession() = runTest {
+        dao.insert(session)
+        val updated = session.copy(preferredTime = null, sessionLength = 30.minutes)
+
+        assertEquals(1, dao.update(updated))
+        assertEquals(updated, dao.getByPlanId(10).first())
+    }
+
+    @Test
+    fun update_withUnknownId_returnsZero() = runTest {
+        assertEquals(0, dao.update(session))
+    }
+
+    @Test
+    fun deleteById_returnsAffectedRowCount() = runTest {
+        dao.insert(session)
+
+        assertEquals(1, dao.deleteById(1))
+        assertEquals(0, dao.deleteById(1))
+        assertNull(dao.getByPlanId(10).first())
     }
 }
