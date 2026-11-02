@@ -1,6 +1,8 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="domain">
     <output-path>$PROJECT_DIR$/roadmap/shared/domain/build/libs</output-path>
-    <root id="archive" name="domain.jar" />
+    <root id="archive" name="domain.jar">
+      <element id="module-output" name="portfolio.roadmap.shared.domain.androidMain" />
+    </root>
   </artifact>
 </component>

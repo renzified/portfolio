@@ -23,6 +23,11 @@ kotlin {
             api(project(":roadmap:shared:domain"))
             implementation(libs.androidx.room.runtime)
             implementation(libs.androidx.sqlite.bundled)
+            implementation(project.dependencies.platform(libs.koin.bom))
+            api(libs.koin.core)
+        }
+        androidMain.dependencies {
+            implementation(libs.koin.android)
         }
         getByName("androidDeviceTest").dependencies {
             implementation(libs.kotlinx.coroutines.test)
