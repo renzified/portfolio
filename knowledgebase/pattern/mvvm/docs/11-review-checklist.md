@@ -1,4 +1,4 @@
-# 10. Review checklist & anti-patterns
+# 11. Review checklist & anti-patterns
 
 Copy into the PR description for any screen/ViewModel change.
 
@@ -39,6 +39,15 @@ Copy into the PR description for any screen/ViewModel change.
 - [ ] Text input via `TextFieldState` — I1
 - [ ] Per-frame values stay in the UI — I2
 
+**Between screens**
+- [ ] Nav keys hold IDs / small parameters only; VM gets them via constructor — N1, N2
+- [ ] No static holders / shared VMs / CompositionLocals used to hand data forward — N3
+- [ ] Results use `ResultEventBus` with explicit keys, only in entry blocks, forwarded to a VM intent, then `removeResult` — N4
+- [ ] Other screens learn about data changes by observing the repository, not by refresh calls — N5
+- [ ] Messages that outlive the screen go to the app message queue — N6
+- [ ] Session/app-wide changes handled by the back-stack owner from state — N7
+- [ ] No `SharedFlow`/`Channel`/event bus between screens or VMs — N8
+
 **Tests**
 - [ ] VM test with fakes covering each UiState phase + each outcome — T1–T3
 - [ ] Screen previews/tests per phase — T4
@@ -70,3 +79,9 @@ Copy into the PR description for any screen/ViewModel change.
 | `expanded` set in VM for an FAQ row | Plumbing for pure UI state | `rememberSaveable` | S2 |
 | `var name by remember { mutableStateOf(state.name) }` | Stale duplicate | VM-owned draft | S7 |
 | `activityViewModels()` as app store | Global coupling | Repository | V6 |
+| `TaskDetailKey(task: TaskUi)` | Stale copy in saved state, size limits | `TaskDetailKey(taskId)` | N1 |
+| `SelectedTask.current = task` before navigating | Lost on process death, hidden dependency | ID in the key | N3 |
+| Picker result read in `XScreen` or kept as state on the opener | Re-applied, duplicated | Forward once to VM intent, then clear | N4 |
+| `LaunchedEffect(Unit) { vm.refresh() }` after returning | Polling for changes | Observe the repository | N5 |
+| `object AppEvents { val bus = MutableSharedFlow<Event>() }` | Dropped/duplicated events, hidden coupling | Repository state / message queue / result | N8 |
+| Each screen collecting a "logged out" event | Duplicated, racy navigation | Session state; root rewrites back stack | N7 |

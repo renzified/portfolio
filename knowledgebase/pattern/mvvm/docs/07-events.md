@@ -114,6 +114,9 @@ Why state and not a stream:
 Messages that may arrive faster than they're shown → keep a `List<UserMessage>` (with ids) and
 `messageShown(id)` removes the head.
 
+Outcomes that must reach **another** screen (a result for the opener, a message that outlives this
+screen, a session change) are covered in chapter 10 (MVVM-N4 – N7).
+
 ## MVVM-E4 — No SharedFlow / Channel for VM → UI events (MUST NOT)
 ```kotlin
 // ❌ Emissions with no active collector are dropped (rotation, background, before first collect)
@@ -122,6 +125,7 @@ private val _events = MutableSharedFlow<Event>()
 private val _events = Channel<Event>()
 ```
 One mechanism for the whole codebase = E3. Consistency beats the small convenience.
+The same applies between screens: no app-wide event bus (MVVM-N8).
 
 ## MVVM-E5 — Navigation executes in the Route (MUST)
 - The VM never holds the back stack (`NavBackStack`, `SnapshotStateList<NavKey>`) or any navigator

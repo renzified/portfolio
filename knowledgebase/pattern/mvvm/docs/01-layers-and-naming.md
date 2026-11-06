@@ -91,6 +91,7 @@ data goes through the data layer — see MVVM-V4.
 | UI model for one item | `XUi` | `TaskUi` |
 | Stateful entry | `XRoute` | `TaskListRoute` |
 | Stateless screen | `XScreen` | `TaskListScreen` |
+| Navigation key | `XKey` | `TaskDetailKey` (see 10 – MVVM-N2) |
 | UI state holder (non-VM) | `XState` + `rememberXState()` | `FeedListState` |
 | VM delegate | `XController` | `PromoCodeController` |
 | VM public functions | intent verb, no `on` prefix | `retry()`, `toggleDone(id)`, `save()` |
@@ -110,6 +111,7 @@ NavDisplay(
     entryDecorators = listOf(
         rememberSaveableStateHolderNavEntryDecorator(),   // rememberSaveable per entry
         rememberViewModelStoreNavEntryDecorator(),        // ViewModelStore per entry  <- required
+        rememberResultEventBusNavEntryDecorator(),        // only if entries exchange results (N4)
     ),
     entryProvider = entryProvider {
         entry<TaskListKey> {
@@ -132,7 +134,7 @@ Libraries this module needs for the rules in this knowledgebase (add to `libs.ve
 | `androidx.lifecycle:lifecycle-viewmodel-compose` | `ViewModel` in Compose, `SavedStateHandle.saveable` |
 | `androidx.lifecycle:lifecycle-runtime-compose` | `collectAsStateWithLifecycle()` (L6) |
 | `androidx.lifecycle:lifecycle-viewmodel-navigation3` | `rememberViewModelStoreNavEntryDecorator()` (L9) |
-| `androidx.navigation3:navigation3-runtime` / `-ui` | `NavDisplay`, `NavKey` (already in catalog) |
+| `androidx.navigation3:navigation3-runtime` / `-ui` ≥ 1.2 | `NavDisplay`, `NavKey`, Result API `ResultEventBus` (N4) (already in catalog) |
 | `io.insert-koin:koin-androidx-compose` | `koinViewModel()` (already in catalog) |
 | `org.jetbrains.kotlinx:kotlinx-coroutines-test` | VM tests (already in catalog) |
 

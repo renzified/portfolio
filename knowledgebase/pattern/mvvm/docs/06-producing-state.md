@@ -117,7 +117,7 @@ calls in `withContext(Dispatchers.IO)` for repository calls. Heavy CPU work in t
 dispatcher (P8).
 
 ## MVVM-P5 — Nav args via constructor; SavedStateHandle for user input only (MUST)
-With Navigation 3 the nav key **is** the argument. Pass what the VM needs from the key into its
+With Navigation 3 the nav key **is** the argument. What a key may contain: see 10 – MVVM-N1. Pass what the VM needs from the key into its
 constructor via Koin `parametersOf`. The key is already saved by the back stack, so it survives
 process death without going through `SavedStateHandle`.
 

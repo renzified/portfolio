@@ -22,13 +22,15 @@ A rulebook, not a tutorial. Every rule has an ID so it can be cited in code revi
 | 7 | [07-events.md](docs/07-events.md) | UI → VM actions, VM → UI one-off outcomes (navigation, snackbar) |
 | 8 | [08-input-and-high-frequency.md](docs/08-input-and-high-frequency.md) | Text fields, search debounce, gestures, animations, phase deferral |
 | 9 | [09-testing.md](docs/09-testing.md) | Testing both state styles and stateless screens |
-| 10 | [10-review-checklist.md](docs/10-review-checklist.md) | Anti-patterns + PR checklist |
+| 10 | [10-between-screens.md](docs/10-between-screens.md) | Nav key contents, returning results, notifying other screens, app-level messages, session changes |
+| 11 | [11-review-checklist.md](docs/11-review-checklist.md) | Anti-patterns + PR checklist |
 
 ---
 
-## The three decision trees
+## The four decision trees
 
-Run these in order whenever you add a new piece of state.
+Run trees 1–3 in order whenever you add a new piece of state. Run tree 4 whenever a value or an
+"it happened" has to leave the screen that produced it.
 
 ### Tree 1 — Where does this state live? (chapter 3)
 
@@ -67,6 +69,20 @@ Is the state for a section that is self-contained (own data source) AND reused o
                     ├── YES → Repository is the source of truth; each VM observes it (MVVM-V4)
                     └── NO  → The destination's ViewModel                    (MVVM-V1)
                               Getting big? Split logic into delegates inside it (MVVM-V2)
+```
+
+### Tree 4 — How does this reach the other screen? (chapter 10)
+
+```
+Is it data the app keeps (persisted, cached, or shown on more than one screen)?
+├── YES → Write it to the repository; other screens observe it. Send nothing.   (MVVM-N5)
+└── NO  → Is it what the next screen needs in order to open?
+          ├── YES → ID / small value in the NavKey                                (MVVM-N1, N2)
+          └── NO  → Is it an answer for the screen that opened this one?
+                    ├── YES → Navigation result, consumed once by the opener      (MVVM-N4)
+                    └── NO  → Message for the user → app-level message queue      (MVVM-N6)
+                              App-wide condition   → session/app state in a repo  (MVVM-N7)
+Never an event bus.                                                              (MVVM-N8)
 ```
 
 ---
@@ -169,3 +185,16 @@ Is the state for a section that is self-contained (own data source) AND reused o
 | T2 | `WhileSubscribed` flows need a collector in `backgroundScope`. |
 | T3 | Snapshot-style VMs are asserted by reading properties directly. |
 | T4 | UI tests target `XScreen` with fake state, no ViewModel. |
+
+### Between screens — ch. 10
+| ID | Rule |
+|---|---|
+| N1 | Nav keys carry IDs and small parameters, never domain/UI objects or lists. |
+| N2 | Key → entry → VM constructor (`parametersOf`); nothing below the Route sees the key. |
+| N3 | No side channels for forward data (static holders, shared VMs, CompositionLocals). |
+| N4 | Results go through `ResultEventBus` in entry blocks (explicit keys), are forwarded to an opener VM intent, then removed. |
+| N5 | A data change is not an event: other screens observe the repository; no "refresh" pings. |
+| N6 | Messages that outlive a screen go into one app-level queue (state + `shown(id)`). |
+| N7 | App-wide conditions (logout, session expired) are repository state; only the back-stack owner reacts. |
+| N8 | MUST NOT use an event bus between screens or VMs (only exception: Nav3 `ResultEventBus` per N4). |
+| N9 | Two panes: selection is the back stack, not shared VM state. |
